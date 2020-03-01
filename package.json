@@ -4,12 +4,12 @@
   "description": "xast utility to serialize to XML",
   "license": "MIT",
   "keywords": [
-    "xast",
-    "util",
-    "xml",
     "unist",
+    "xast",
+    "xast-util",
     "util",
-    "utility"
+    "utility",
+    "xml"
   ],
   "repository": "syntax-tree/xast-util-to-xml",
   "bugs": "https://github.com/syntax-tree/xast-util-to-xml/issues",
