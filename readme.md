@@ -95,6 +95,15 @@ When falsey, encodes `raw` nodes (`boolean`, default: `false`).
 
 XML can be a dangerous language: don’t trust user-provided data.
 
+## Related
+
+*   [`xast-util-from-xml`](https://github.com/syntax-tree/xast-util-from-xml)
+    — parse from xml
+*   [`hast-util-to-xast`](https://github.com/syntax-tree/hast-util-to-xast)
+    — transform hast (html, svg) to xast (xml)
+*   [`xastscript`](https://github.com/syntax-tree/xastscript)
+    — create xast trees
+
 ## Contribute
 
 See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
