@@ -4,9 +4,9 @@ var test = require('tape')
 var u = require('unist-builder')
 var to = require('..')
 
-test('toXml()', function(t) {
+test('toXml()', function (t) {
   t.throws(
-    function() {
+    function () {
       to(true)
     },
     /Expected node, not `true`/,
@@ -14,7 +14,7 @@ test('toXml()', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       to(u('foo', []))
     },
     /Cannot compile unknown node `foo`/,

@@ -5,7 +5,7 @@ var x = require('xastscript')
 var u = require('unist-builder')
 var to = require('..')
 
-test('`element` attributes', function(t) {
+test('`element` attributes', function (t) {
   t.deepEqual(
     to(u('element', {name: 'y'}, [])),
     '<y></y>',
@@ -68,7 +68,7 @@ test('`element` attributes', function(t) {
 
   t.end()
 
-  t.test('quote', function(st) {
+  t.test('quote', function (st) {
     st.deepEqual(
       to(x('y', {a: 'b'})),
       '<y a="b"></y>',
@@ -100,7 +100,7 @@ test('`element` attributes', function(t) {
     )
 
     st.throws(
-      function() {
+      function () {
         to(x('y'), {quote: '`'})
       },
       /Invalid quote ```, expected `'` or `"`/,
@@ -110,7 +110,7 @@ test('`element` attributes', function(t) {
     st.end()
   })
 
-  t.test('quoteSmart', function(st) {
+  t.test('quoteSmart', function (st) {
     st.deepEqual(
       to(x('y', {a: 'b'}), {quoteSmart: true}),
       '<y a="b"></y>',
@@ -156,7 +156,7 @@ test('`element` attributes', function(t) {
     st.end()
   })
 
-  t.test('entities in attributes', function(st) {
+  t.test('entities in attributes', function (st) {
     st.deepEqual(
       to(x('y', {'3<5': 'a'})),
       '<y 3&#x3C;5="a"></y>',

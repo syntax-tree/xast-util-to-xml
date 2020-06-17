@@ -4,7 +4,7 @@ var test = require('tape')
 var u = require('unist-builder')
 var to = require('..')
 
-test('`raw`', function(t) {
+test('`raw`', function (t) {
   t.deepEqual(
     to(u('raw', '<script>alert("XSS!")</script>')),
     '&#x3C;script>alert("XSS!")&#x3C;/script>',

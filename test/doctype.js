@@ -4,7 +4,7 @@ var test = require('tape')
 var u = require('unist-builder')
 var to = require('..')
 
-test('`doctype`', function(t) {
+test('`doctype`', function (t) {
   t.deepEqual(
     to(u('doctype')),
     '<!DOCTYPE>',

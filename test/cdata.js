@@ -4,7 +4,7 @@ var test = require('tape')
 var u = require('unist-builder')
 var to = require('..')
 
-test('`cdata`', function(t) {
+test('`cdata`', function (t) {
   t.deepEqual(
     to(u('cdata', '3 < 5 & 8 > 13')),
     '<![CDATA[3 < 5 & 8 > 13]]>',

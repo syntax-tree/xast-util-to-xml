@@ -4,7 +4,7 @@ var test = require('tape')
 var u = require('unist-builder')
 var to = require('..')
 
-test('`comment`', function(t) {
+test('`comment`', function (t) {
   t.deepEqual(
     to(u('comment', 'alpha')),
     '<!--alpha-->',
