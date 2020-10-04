@@ -23,14 +23,18 @@
   ],
   "files": [
     "lib",
-    "index.js"
+    "index.js",
+    "types/index.d.ts"
   ],
+  "types": "types",
   "dependencies": {
+    "@types/xast": "^1.0.0",
     "ccount": "^1.0.0",
     "stringify-entities": "^2.0.0"
   },
   "devDependencies": {
     "browserify": "^16.0.0",
+    "dtslint": "^4.0.0",
     "nyc": "^15.0.0",
     "prettier": "^2.0.0",
     "remark-cli": "^8.0.0",
@@ -45,7 +49,8 @@
     "format": "remark . -qfo && prettier . --write && xo --fix",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test/index.js",
-    "test": "npm run format && npm run test-coverage"
+    "test-types": "dtslint types",
+    "test": "npm run format && npm run test-coverage && npm run test-types"
   },
   "prettier": {
     "tabWidth": 2,
