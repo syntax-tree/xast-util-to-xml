@@ -30,17 +30,15 @@
   "dependencies": {
     "@types/xast": "^1.0.0",
     "ccount": "^1.0.0",
-    "stringify-entities": "^3.0.0"
+    "stringify-entities": "^3.1.0"
   },
   "devDependencies": {
-    "browserify": "^17.0.0",
     "dtslint": "^4.0.0",
     "nyc": "^15.0.0",
     "prettier": "^2.0.0",
     "remark-cli": "^9.0.0",
     "remark-preset-wooorm": "^8.0.0",
     "tape": "^5.0.0",
-    "tinyify": "^3.0.0",
     "unist-builder": "^2.0.0",
     "xastscript": "^2.0.0",
     "xo": "^0.34.0"
