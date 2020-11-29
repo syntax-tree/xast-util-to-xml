@@ -120,9 +120,9 @@ abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/syntax-tree/xast-util-to-xml.svg
+[build-badge]: https://github.com/syntax-tree/xast-util-to-xml/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/syntax-tree/xast-util-to-xml
+[build]: https://github.com/syntax-tree/xast-util-to-xml/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/syntax-tree/xast-util-to-xml.svg
 
