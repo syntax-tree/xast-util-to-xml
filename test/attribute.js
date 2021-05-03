@@ -23,12 +23,14 @@ test('`element` attributes', function (t) {
   )
 
   t.deepEqual(
+    // @ts-ignore runtime.
     toXml(u('element', {name: 'y', attributes: {a: Number.NaN}}, [])),
     '<y a="NaN"></y>',
     'should include attributes set to `NaN`'
   )
 
   t.deepEqual(
+    // @ts-ignore runtime.
     toXml(u('element', {name: 'y', attributes: {a: true}}, [])),
     '<y a="true"></y>',
     'should include attributes set to `true`'
@@ -41,24 +43,28 @@ test('`element` attributes', function (t) {
   )
 
   t.deepEqual(
+    // @ts-ignore runtime.
     toXml(u('element', {name: 'y', attributes: {a: ['b', 'c']}}, [])),
     '<y a="b,c"></y>',
     'should include attributes set to an array'
   )
 
   t.deepEqual(
+    // @ts-ignore runtime.
     toXml(u('element', {name: 'y', attributes: {a: 1}}, [])),
     '<y a="1"></y>',
     'should include attributes set to a number'
   )
 
   t.deepEqual(
+    // @ts-ignore runtime.
     toXml(u('element', {name: 'y', attributes: {a: 0}}, [])),
     '<y a="0"></y>',
     'should include attributes set to `0`'
   )
 
   t.deepEqual(
+    // @ts-ignore runtime.
     toXml(u('element', {name: 'y', attributes: {a: {toString}}}, [])),
     '<y a="yup"></y>',
     'should stringify unknowns set to objects'
@@ -99,6 +105,7 @@ test('`element` attributes', function (t) {
 
     st.throws(
       function () {
+        // @ts-ignore runtime.
         toXml(x('y'), {quote: '`'})
       },
       /Invalid quote ```, expected `'` or `"`/,

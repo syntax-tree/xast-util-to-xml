@@ -5,6 +5,7 @@ import {toXml} from '../index.js'
 test('toXml()', function (t) {
   t.throws(
     function () {
+      // @ts-ignore runtime.
       toXml(true)
     },
     /Expected node, not `true`/,
@@ -13,6 +14,7 @@ test('toXml()', function (t) {
 
   t.throws(
     function () {
+      // @ts-ignore runtime.
       toXml(u('foo', []))
     },
     /Cannot compile unknown node `foo`/,

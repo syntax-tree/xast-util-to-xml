@@ -4,6 +4,7 @@ import {toXml} from '../index.js'
 
 test('`element`', function (t) {
   t.deepEqual(
+    // @ts-ignore runtime.
     toXml({type: 'element', name: 'a'}),
     '<a></a>',
     'should serialize `element`s w/o children'
