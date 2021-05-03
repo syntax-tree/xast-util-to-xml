@@ -21,34 +21,35 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "index.js",
+  "types": "types/",
   "files": [
-    "lib",
-    "index.js",
-    "types/index.d.ts"
+    "lib/",
+    "types/index.d.ts",
+    "index.js"
   ],
-  "types": "types",
   "dependencies": {
     "@types/xast": "^1.0.0",
-    "ccount": "^1.0.0",
-    "stringify-entities": "^3.1.0"
+    "ccount": "^2.0.0",
+    "stringify-entities": "^4.0.0"
   },
   "devDependencies": {
-    "dtslint": "^4.0.0",
-    "nyc": "^15.0.0",
+    "c8": "^7.0.0",
     "prettier": "^2.0.0",
     "remark-cli": "^9.0.0",
     "remark-preset-wooorm": "^8.0.0",
     "tape": "^5.0.0",
-    "unist-builder": "^2.0.0",
+    "unist-builder": "^3.0.0",
     "xastscript": "^2.0.0",
-    "xo": "^0.38.0"
+    "xo": "^0.39.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier . --write --loglevel warn && xo --fix",
-    "test-api": "node test",
-    "test-coverage": "nyc --reporter lcov tape test/index.js",
-    "test-types": "dtslint types",
-    "test": "npm run format && npm run test-coverage && npm run test-types"
+    "test-api": "node test/index.js",
+    "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov node test/index.js",
+    "test": "npm run format && npm run test-coverage"
   },
   "prettier": {
     "tabWidth": 2,
@@ -60,19 +61,14 @@
   },
   "xo": {
     "prettier": true,
-    "esnext": false,
     "rules": {
-      "unicorn/prefer-includes": "off",
-      "unicorn/prefer-number-properties": "off",
-      "guard-for-in": "off",
-      "no-control-regex": "off"
-    }
-  },
-  "nyc": {
-    "check-coverage": true,
-    "lines": 100,
-    "functions": 100,
-    "branches": 100
+      "no-control-regex": "off",
+      "no-var": "off",
+      "prefer-arrow-callback": "off"
+    },
+    "ignore": [
+      "types/"
+    ]
   },
   "remarkConfig": {
     "plugins": [

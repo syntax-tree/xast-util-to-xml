@@ -1,24 +1,28 @@
-'use strict'
-
-var test = require('tape')
-var x = require('xastscript')
-var to = require('..')
+import test from 'tape'
+import x from 'xastscript'
+import {toXml} from '../index.js'
 
 test('`element`', function (t) {
   t.deepEqual(
-    to(x('y', 'bravo')),
+    toXml({type: 'element', name: 'a'}),
+    '<a></a>',
+    'should serialize `element`s w/o children'
+  )
+
+  t.deepEqual(
+    toXml(x('y', 'bravo')),
     '<y>bravo</y>',
     'should serialize `element`s'
   )
 
   t.deepEqual(
-    to(x('y'), {closeEmptyElements: true}),
+    toXml(x('y'), {closeEmptyElements: true}),
     '<y />',
     'should serialize with ` /` in `closeEmptyElements` mode'
   )
 
   t.deepEqual(
-    to(x('y'), {closeEmptyElements: true, tightClose: true}),
+    toXml(x('y'), {closeEmptyElements: true, tightClose: true}),
     '<y/>',
     'should serialize with `/` in `closeEmptyElements` and `tightClose` mode'
   )

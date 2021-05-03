@@ -1,24 +1,22 @@
-'use strict'
-
-var test = require('tape')
-var u = require('unist-builder')
-var to = require('..')
+import test from 'tape'
+import {u} from 'unist-builder'
+import {toXml} from '../index.js'
 
 test('`doctype`', function (t) {
   t.deepEqual(
-    to(u('doctype')),
+    toXml(u('doctype')),
     '<!DOCTYPE>',
     'should serialize doctypes without `name`'
   )
 
   t.deepEqual(
-    to(u('doctype', {name: 'html'})),
+    toXml(u('doctype', {name: 'html'})),
     '<!DOCTYPE html>',
     'should serialize doctypes with `name`'
   )
 
   t.deepEqual(
-    to(
+    toXml(
       u('doctype', {
         name: 'html',
         public: '-//W3C//DTD XHTML 1.0 Transitional//EN'
@@ -29,13 +27,13 @@ test('`doctype`', function (t) {
   )
 
   t.deepEqual(
-    to(u('doctype', {name: 'html', system: 'about:legacy-compat'})),
+    toXml(u('doctype', {name: 'html', system: 'about:legacy-compat'})),
     '<!DOCTYPE html SYSTEM "about:legacy-compat">',
     'should serialize doctypes with a system identifier'
   )
 
   t.deepEqual(
-    to(
+    toXml(
       u('doctype', {
         name: 'html',
         public: '-//W3C//DTD HTML 4.01//',
@@ -47,17 +45,17 @@ test('`doctype`', function (t) {
   )
 
   t.deepEqual(
-    to(u('doctype', {name: 'html', public: 'taco"'})),
+    toXml(u('doctype', {name: 'html', public: 'taco"'})),
     '<!DOCTYPE html PUBLIC "taco&#x22;">',
     'should quote smartly (1)'
   )
   t.deepEqual(
-    to(u('doctype', {name: 'html', public: 'taco"'}), {quoteSmart: true}),
+    toXml(u('doctype', {name: 'html', public: 'taco"'}), {quoteSmart: true}),
     "<!DOCTYPE html PUBLIC 'taco\"'>",
     'should quote smartly (2)'
   )
   t.deepEqual(
-    to(u('doctype', {name: 'html', public: '"ta\'co"'}), {quoteSmart: true}),
+    toXml(u('doctype', {name: 'html', public: '"ta\'co"'}), {quoteSmart: true}),
     '<!DOCTYPE html PUBLIC \'"ta&#x27;co"\'>',
     'should quote smartly (3)'
   )

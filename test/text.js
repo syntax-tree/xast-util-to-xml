@@ -1,14 +1,12 @@
-'use strict'
-
-var test = require('tape')
-var u = require('unist-builder')
-var to = require('..')
+import test from 'tape'
+import {u} from 'unist-builder'
+import {toXml} from '../index.js'
 
 test('`text`', function (t) {
-  t.deepEqual(to(u('text', 'alpha')), 'alpha', 'should serialize `text`s')
+  t.deepEqual(toXml(u('text', 'alpha')), 'alpha', 'should serialize `text`s')
 
   t.deepEqual(
-    to(u('text', '3 < 5 & 8 > 13')),
+    toXml(u('text', '3 < 5 & 8 > 13')),
     '3 &#x3C; 5 &#x26; 8 > 13',
     'should encode `text`s'
   )
