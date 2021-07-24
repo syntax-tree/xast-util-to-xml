@@ -2,7 +2,7 @@ import test from 'tape'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`text`', function (t) {
+test('`text`', (t) => {
   t.deepEqual(toXml(u('text', 'alpha')), 'alpha', 'should serialize `text`s')
 
   t.deepEqual(

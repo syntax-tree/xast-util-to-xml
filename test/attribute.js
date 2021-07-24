@@ -3,7 +3,7 @@ import x from 'xastscript'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`element` attributes', function (t) {
+test('`element` attributes', (t) => {
   t.deepEqual(
     toXml(u('element', {name: 'y'}, [])),
     '<y></y>',
@@ -72,7 +72,7 @@ test('`element` attributes', function (t) {
 
   t.end()
 
-  t.test('quote', function (st) {
+  t.test('quote', (st) => {
     st.deepEqual(
       toXml(x('y', {a: 'b'})),
       '<y a="b"></y>',
@@ -104,7 +104,7 @@ test('`element` attributes', function (t) {
     )
 
     st.throws(
-      function () {
+      () => {
         // @ts-ignore runtime.
         toXml(x('y'), {quote: '`'})
       },
@@ -115,7 +115,7 @@ test('`element` attributes', function (t) {
     st.end()
   })
 
-  t.test('quoteSmart', function (st) {
+  t.test('quoteSmart', (st) => {
     st.deepEqual(
       toXml(x('y', {a: 'b'}), {quoteSmart: true}),
       '<y a="b"></y>',
@@ -161,7 +161,7 @@ test('`element` attributes', function (t) {
     st.end()
   })
 
-  t.test('entities in attributes', function (st) {
+  t.test('entities in attributes', (st) => {
     st.deepEqual(
       toXml(x('y', {'3<5': 'a'})),
       '<y 3&#x3C;5="a"></y>',

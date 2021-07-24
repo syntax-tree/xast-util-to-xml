@@ -2,7 +2,7 @@ import test from 'tape'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`comment`', function (t) {
+test('`comment`', (t) => {
   t.deepEqual(
     toXml(u('comment', 'alpha')),
     '<!--alpha-->',

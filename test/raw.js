@@ -2,7 +2,7 @@ import test from 'tape'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`raw`', function (t) {
+test('`raw`', (t) => {
   t.deepEqual(
     // @ts-ignore non-standard.
     toXml(u('raw', '<script>alert("XSS!")</script>')),

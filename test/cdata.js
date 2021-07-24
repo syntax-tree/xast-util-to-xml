@@ -2,7 +2,7 @@ import test from 'tape'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`cdata`', function (t) {
+test('`cdata`', (t) => {
   t.deepEqual(
     toXml(u('cdata', '3 < 5 & 8 > 13')),
     '<![CDATA[3 < 5 & 8 > 13]]>',

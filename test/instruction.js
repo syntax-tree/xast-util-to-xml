@@ -2,7 +2,7 @@ import test from 'tape'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`instruction`', function (t) {
+test('`instruction`', (t) => {
   t.deepEqual(
     // @ts-ignore runtime.
     toXml(u('instruction')),

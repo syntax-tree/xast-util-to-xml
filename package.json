@@ -68,9 +68,7 @@
   "xo": {
     "prettier": true,
     "rules": {
-      "no-control-regex": "off",
-      "no-var": "off",
-      "prefer-arrow-callback": "off"
+      "no-control-regex": "off"
     }
   },
   "remarkConfig": {

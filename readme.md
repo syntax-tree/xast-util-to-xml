@@ -28,7 +28,7 @@ import {u} from 'unist-builder'
 import {x} from 'xastscript'
 import {toXml} from 'xast-util-to-xml'
 
-var tree = u('root', [
+const tree = u('root', [
   u('instruction', {name: 'xml'}, 'version="1.0" encoding="utf-8"'),
   u('text', '\n'),
   x('ncx', {xmlns: 'http://www.daisy.org/z3986/2005/ncx/', version: '2005-1'}, [

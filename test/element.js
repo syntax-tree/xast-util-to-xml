@@ -2,7 +2,7 @@ import test from 'tape'
 import x from 'xastscript'
 import {toXml} from '../index.js'
 
-test('`element`', function (t) {
+test('`element`', (t) => {
   t.deepEqual(
     // @ts-ignore runtime.
     toXml({type: 'element', name: 'a'}),

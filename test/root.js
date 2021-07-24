@@ -3,7 +3,7 @@ import x from 'xastscript'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`root`', function (t) {
+test('`root`', (t) => {
   t.deepEqual(
     toXml(
       u('root', [u('text', 'alpha '), x('y', 'bravo'), u('text', ' charlie')])

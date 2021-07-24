@@ -2,9 +2,9 @@ import test from 'tape'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('toXml()', function (t) {
+test('toXml()', (t) => {
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime.
       toXml(true)
     },
@@ -13,7 +13,7 @@ test('toXml()', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       // @ts-ignore runtime.
       toXml(u('foo', []))
     },
