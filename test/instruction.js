@@ -4,14 +4,14 @@ import {toXml} from '../index.js'
 
 test('`instruction`', (t) => {
   t.deepEqual(
-    // @ts-ignore runtime.
+    // @ts-expect-error runtime.
     toXml(u('instruction')),
     '<?x?>',
     'should serialize instructions without `name`'
   )
 
   t.deepEqual(
-    // @ts-ignore runtime.
+    // @ts-expect-error runtime.
     toXml(u('instruction', {name: 'xml'})),
     '<?xml?>',
     'should serialize instructions with `name`'

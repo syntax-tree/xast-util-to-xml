@@ -4,7 +4,7 @@ import {toXml} from '../index.js'
 
 test('`doctype`', (t) => {
   t.deepEqual(
-    // @ts-ignore runtime.
+    // @ts-expect-error runtime.
     toXml(u('doctype')),
     '<!DOCTYPE>',
     'should serialize doctypes without `name`'
