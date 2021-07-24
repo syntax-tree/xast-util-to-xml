@@ -1,5 +1,5 @@
 import test from 'tape'
-import x from 'xastscript'
+import {x} from 'xastscript'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
