@@ -8,17 +8,66 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[xast][]** utility to serialize to XML.
+[xast][] utility to serialize as XML.
+
+## Contents
+
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`toXml(tree[, options])`](#toxmltree-options)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This package is a utility that turns a xast tree into a string of XML.
+
+## When should I use this?
+
+You can use this utility when you want to get the serialized XML that is
+represented by the syntax tree, either because you’re done with the syntax tree,
+or because you’re integrating with another tool that does not support syntax
+trees.
+
+This utility has options to configure how the XML is serialized.
+These options help when building tools that make output pretty (such as
+formatters) or ugly (such as minifiers).
+
+The utility [`xast-util-from-xml`][xast-util-from-xml] does the inverse of this
+utility.
+It turns XML into xast.
+
+The utility [`hast-util-to-html`][hast-util-to-html] does the same as this
+utility but for HTML: it turns [hast][] into HTML.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
-Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
-
-[npm][]:
+This package is [ESM only][esm].
+In Node.js (version 12.20+, 14.14+, 16.0+, or 18.0+), install with [npm][]:
 
 ```sh
 npm install xast-util-to-xml
+```
+
+In Deno with [`esm.sh`][esmsh]:
+
+```js
+import {toXml} from 'https://esm.sh/xast-util-to-xml@3'
+```
+
+In browsers with [`esm.sh`][esmsh]:
+
+```html
+<script type="module">
+  import {toXml} from 'https://esm.sh/xast-util-to-xml@3?bundle'
+</script>
 ```
 
 ## Use
@@ -64,12 +113,16 @@ Yields:
 
 ## API
 
-This package exports the following identifiers: `toXml`.
+This package exports the identifier `toXml`.
 There is no default export.
 
 ### `toXml(tree[, options])`
 
-Serialize the given **[xast][]** *[tree][]* (or list of nodes).
+Serialize the given [xast][] node (or list of nodes).
+
+##### `options`
+
+Configuration (optional).
 
 ###### `options.quote`
 
@@ -95,7 +148,20 @@ instead of `<circle />` (`boolean`, default: `false`).
 
 Allow `raw` nodes and insert them as raw XML.
 When falsey, encodes `raw` nodes (`boolean`, default: `false`).
-**Note**: Only set this if you completely trust the content.
+
+> ☢️ **Danger**: only set this if you completely trust the content.
+
+## Types
+
+This package is fully typed with [TypeScript][].
+It exports the additional type `Options`.
+
+## Compatibility
+
+Projects maintained by the unified collective are compatible with all maintained
+versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, 16.0+, and 18.0+.
+Our projects sometimes work with older versions, but this is not guaranteed.
 
 ## Security
 
@@ -112,8 +178,8 @@ XML can be a dangerous language: don’t trust user-provided data.
 
 ## Contribute
 
-See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
-started.
+See [`contributing.md`][contributing] in [`syntax-tree/.github`][health] for
+ways to get started.
 See [`support.md`][support] for ways to get help.
 
 This project has a [code of conduct][coc].
@@ -154,16 +220,28 @@ abide by its terms.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[esmsh]: https://esm.sh
+
+[typescript]: https://www.typescriptlang.org
+
 [license]: license
 
 [author]: https://wooorm.com
 
-[contributing]: https://github.com/syntax-tree/.github/blob/HEAD/contributing.md
+[health]: https://github.com/syntax-tree/.github
 
-[support]: https://github.com/syntax-tree/.github/blob/HEAD/support.md
+[contributing]: https://github.com/syntax-tree/.github/blob/main/contributing.md
 
-[coc]: https://github.com/syntax-tree/.github/blob/HEAD/code-of-conduct.md
+[support]: https://github.com/syntax-tree/.github/blob/main/support.md
 
-[tree]: https://github.com/syntax-tree/unist#tree
+[coc]: https://github.com/syntax-tree/.github/blob/main/code-of-conduct.md
 
 [xast]: https://github.com/syntax-tree/xast
+
+[hast]: https://github.com/syntax-tree/hast
+
+[xast-util-from-xml]: https://github.com/syntax-tree/xast-util-from-xml
+
+[hast-util-to-html]: https://github.com/syntax-tree/hast-util-to-html
