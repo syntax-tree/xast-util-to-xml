@@ -119,7 +119,13 @@ test('`element` attributes', (t) => {
     st.deepEqual(
       toXml(x('y', {a: 'b'}), {quoteSmart: true}),
       '<y a="b"></y>',
-      'should quote attribute values with primary quotes by default'
+      'should quote attribute values with primary quotes by default (`"`)'
+    )
+
+    st.deepEqual(
+      toXml(x('y', {a: 'b'}), {quote: "'", quoteSmart: true}),
+      "<y a='b'></y>",
+      "should quote attribute values with primary quotes by default (`'`)"
     )
 
     st.deepEqual(
