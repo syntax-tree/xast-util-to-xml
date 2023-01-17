@@ -1,6 +1,6 @@
 {
   "name": "xast-util-to-xml",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "xast utility to serialize to XML",
   "license": "MIT",
   "keywords": [
