@@ -18,6 +18,8 @@
 *   [Use](#use)
 *   [API](#api)
     *   [`toXml(tree[, options])`](#toxmltree-options)
+    *   [`Options`](#options)
+    *   [`Quote`](#quote-1)
 *   [Types](#types)
 *   [Compatibility](#compatibility)
 *   [Security](#security)
@@ -50,7 +52,7 @@ utility but for HTML: it turns [hast][] into HTML.
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 12.20+, 14.14+, 16.0+, or 18.0+), install with [npm][]:
+In Node.js (version 14.14+ and 16.0+), install with [npm][]:
 
 ```sh
 npm install xast-util-to-xml
@@ -113,48 +115,76 @@ Yields:
 
 ## API
 
-This package exports the identifier `toXml`.
+This package exports the identifier [`toXml`][toxml].
 There is no default export.
 
 ### `toXml(tree[, options])`
 
-Serialize the given [xast][] node (or list of nodes).
+Serialize a xast tree to XML.
 
-##### `options`
+###### Parameters
 
-Configuration (optional).
+*   `tree` ([`Node`][node] or `Array<Node>`)
+    — xast node(s) to serialize
+*   `options` ([`Options`][options], optional)
+    — configuration
 
-###### `options.quote`
+###### Returns
 
-Preferred quote to use (`'"'` or `'\''`, default: `'"'`).
+Serialized XML (`string`).
 
-###### `options.quoteSmart`
+### `Options`
 
-Use the other quote if that results in less bytes (`boolean`, default: `false`).
+Configuration (TypeScript type).
 
-###### `options.closeEmptyElements`
+##### Fields
 
-Close elements without any content with slash (`/`) on the opening tag
-instead of an end tag: `<circle />` instead of `<circle></circle>` (`boolean`,
-default: `false`).
+###### `allowDangerousXml`
+
+Allow `raw` nodes and insert them as raw XML (`boolean`, default: `false`).
+
+When `false`, `Raw` nodes are encoded.
+
+> ⚠️ **Danger**: only set this if you completely trust the content.
+
+###### `closeEmptyElements`
+
+Close elements without any content with slash (`/`) on the opening tag instead
+of an end tag: `<circle />` instead of `<circle></circle>` (`boolean`, default:
+`false`).
+
 See `tightClose` to control whether a space is used before the slash.
 
-###### `options.tightClose`
+###### `quote`
+
+Preferred quote to use ([`Quote`][quote], default: `'"'`).
+
+###### `quoteSmart`
+
+Use the other quote if that results in less bytes (`boolean`, default:
+`false`).
+
+###### `tightClose`
 
 Do not use an extra space when closing self-closing elements: `<circle/>`
 instead of `<circle />` (`boolean`, default: `false`).
 
-###### `options.allowDangerousXml`
+> 👉 **Note**: only used if `closeEmptyElements: true`.
 
-Allow `raw` nodes and insert them as raw XML.
-When falsey, encodes `raw` nodes (`boolean`, default: `false`).
+### `Quote`
 
-> ☢️ **Danger**: only set this if you completely trust the content.
+XML quotes for attribute values (TypeScript type).
+
+###### Type
+
+```ts
+type Quote = '"' | "'"
+```
 
 ## Types
 
 This package is fully typed with [TypeScript][].
-It exports the additional type `Options`.
+It exports the additional types [`Options`][options] and [`Quote`][quote].
 
 ## Compatibility
 
@@ -240,8 +270,16 @@ abide by its terms.
 
 [xast]: https://github.com/syntax-tree/xast
 
+[node]: https://github.com/syntax-tree/xast#nodes
+
 [hast]: https://github.com/syntax-tree/hast
 
 [xast-util-from-xml]: https://github.com/syntax-tree/xast-util-from-xml
 
 [hast-util-to-html]: https://github.com/syntax-tree/hast-util-to-html
+
+[toxml]: #toxmltree-options
+
+[options]: #options
+
+[quote]: #quote-1
