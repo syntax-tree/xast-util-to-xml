@@ -1,22 +1,23 @@
-import test from 'tape'
+import assert from 'node:assert/strict'
+import test from 'node:test'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`doctype`', (t) => {
-  t.deepEqual(
+test('`doctype`', () => {
+  assert.deepEqual(
     // @ts-expect-error runtime.
     toXml(u('doctype')),
     '<!DOCTYPE>',
     'should serialize doctypes without `name`'
   )
 
-  t.deepEqual(
+  assert.deepEqual(
     toXml(u('doctype', {name: 'html'})),
     '<!DOCTYPE html>',
     'should serialize doctypes with `name`'
   )
 
-  t.deepEqual(
+  assert.deepEqual(
     toXml(
       u('doctype', {
         name: 'html',
@@ -27,13 +28,13 @@ test('`doctype`', (t) => {
     'should serialize doctypes with a public identifier'
   )
 
-  t.deepEqual(
+  assert.deepEqual(
     toXml(u('doctype', {name: 'html', system: 'about:legacy-compat'})),
     '<!DOCTYPE html SYSTEM "about:legacy-compat">',
     'should serialize doctypes with a system identifier'
   )
 
-  t.deepEqual(
+  assert.deepEqual(
     toXml(
       u('doctype', {
         name: 'html',
@@ -45,21 +46,19 @@ test('`doctype`', (t) => {
     'should serialize doctypes with both identifiers'
   )
 
-  t.deepEqual(
+  assert.deepEqual(
     toXml(u('doctype', {name: 'html', public: 'taco"'})),
     '<!DOCTYPE html PUBLIC "taco&#x22;">',
     'should quote smartly (1)'
   )
-  t.deepEqual(
+  assert.deepEqual(
     toXml(u('doctype', {name: 'html', public: 'taco"'}), {quoteSmart: true}),
     "<!DOCTYPE html PUBLIC 'taco\"'>",
     'should quote smartly (2)'
   )
-  t.deepEqual(
+  assert.deepEqual(
     toXml(u('doctype', {name: 'html', public: '"ta\'co"'}), {quoteSmart: true}),
     '<!DOCTYPE html PUBLIC \'"ta&#x27;co"\'>',
     'should quote smartly (3)'
   )
-
-  t.end()
 })

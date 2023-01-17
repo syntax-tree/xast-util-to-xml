@@ -1,9 +1,10 @@
-import test from 'tape'
+import assert from 'node:assert/strict'
+import test from 'node:test'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('toXml()', (t) => {
-  t.throws(
+test('toXml()', () => {
+  assert.throws(
     () => {
       // @ts-expect-error runtime.
       toXml(true)
@@ -12,7 +13,7 @@ test('toXml()', (t) => {
     'should throw on non-nodes'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       // @ts-expect-error runtime.
       toXml(u('foo', []))
@@ -20,6 +21,4 @@ test('toXml()', (t) => {
     /Cannot compile unknown node `foo`/,
     'should throw on unknown nodes'
   )
-
-  t.end()
 })

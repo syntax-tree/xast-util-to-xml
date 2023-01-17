@@ -1,26 +1,25 @@
-import test from 'tape'
+import assert from 'node:assert/strict'
+import test from 'node:test'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`comment`', (t) => {
-  t.deepEqual(
+test('`comment`', () => {
+  assert.deepEqual(
     toXml(u('comment', 'alpha')),
     '<!--alpha-->',
     'should serialize `comment`s'
   )
 
-  t.deepEqual(
+  assert.deepEqual(
     toXml(u('comment', 'AT&T')),
     '<!--AT&T-->',
     'should not encode `comment`s (#1)'
   )
 
   // No way to get around this.
-  t.deepEqual(
+  assert.deepEqual(
     toXml(u('comment', '-->')),
     '<!--&#x2D;&#x2D;>-->',
     'should not encode `comment`s (#2)'
   )
-
-  t.end()
 })
