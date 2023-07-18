@@ -6,7 +6,10 @@ import {toXml} from '../index.js'
 
 test('`element` attributes', async (t) => {
   assert.deepEqual(
-    toXml(u('element', {name: 'y'}, [])),
+    toXml(
+      // @ts-expect-error: check how runtime does not fail on missing `attributes`.
+      u('element', {name: 'y'}, [])
+    ),
     '<y></y>',
     'should ignore missing attributes'
   )
