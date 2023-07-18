@@ -62,14 +62,14 @@ npm install xast-util-to-xml
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {toXml} from 'https://esm.sh/xast-util-to-xml@3'
+import {toXml} from 'https://esm.sh/xast-util-to-xml@4'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {toXml} from 'https://esm.sh/xast-util-to-xml@3?bundle'
+  import {toXml} from 'https://esm.sh/xast-util-to-xml@4?bundle'
 </script>
 ```
 
