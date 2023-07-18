@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {u} from 'unist-builder'
-import {toXml} from '../index.js'
+import {toXml} from 'xast-util-to-xml'
 
 test('`text`', async function (t) {
   await t.test('should serialize `text`s', async function () {

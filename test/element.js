@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {x} from 'xastscript'
-import {toXml} from '../index.js'
+import {toXml} from 'xast-util-to-xml'
 
 test('`element`', async function (t) {
   await t.test('should serialize `element`s w/o children', async function () {

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {u} from 'unist-builder'
 import {x} from 'xastscript'
-import {toXml} from '../index.js'
+import {toXml} from 'xast-util-to-xml'
 
 test('`root`', async function (t) {
   await t.test('should serialize `root`s', async function () {

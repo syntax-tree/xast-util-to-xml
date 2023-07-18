@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {u} from 'unist-builder'
-import {toXml} from '../index.js'
+import {toXml} from 'xast-util-to-xml'
 
 test('toXml()', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('../index.js')).sort(), ['toXml'])
+    assert.deepEqual(Object.keys(await import('xast-util-to-xml')).sort(), [
+      'toXml'
+    ])
   })
 
   await t.test('should throw on non-nodes', async function () {
