@@ -3,16 +3,18 @@ import test from 'node:test'
 import {u} from 'unist-builder'
 import {toXml} from '../index.js'
 
-test('`cdata`', () => {
-  assert.deepEqual(
-    toXml(u('cdata', '3 < 5 & 8 > 13')),
-    '<![CDATA[3 < 5 & 8 > 13]]>',
-    'should not encode `cdata`s'
-  )
+test('`cdata`', async function (t) {
+  await t.test('should not encode `cdata`s', async function () {
+    assert.deepEqual(
+      toXml(u('cdata', '3 < 5 & 8 > 13')),
+      '<![CDATA[3 < 5 & 8 > 13]]>'
+    )
+  })
 
-  assert.deepEqual(
-    toXml(u('cdata', '3 ]]> 5')),
-    '<![CDATA[3 ]]&#x3E; 5]]>',
-    'should encode cdata otherwise closing `cdata`s'
+  await t.test(
+    'should encode cdata otherwise closing `cdata`s',
+    async function () {
+      assert.deepEqual(toXml(u('cdata', '3 ]]> 5')), '<![CDATA[3 ]]&#x3E; 5]]>')
+    }
   )
 })
