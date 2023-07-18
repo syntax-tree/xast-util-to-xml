@@ -1,6 +1,2 @@
-/**
- * @typedef {import('./lib/index.js').Options} Options
- * @typedef {import('./lib/index.js').Quote} Quote
- */
-
+// Note: Types exported from `index.d.ts`.
 export {toXml} from './lib/index.js'

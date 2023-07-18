@@ -20,6 +20,7 @@
     *   [`toXml(tree[, options])`](#toxmltree-options)
     *   [`Options`](#options)
     *   [`Quote`](#quote-1)
+    *   [`Raw`](#raw)
 *   [Types](#types)
 *   [Compatibility](#compatibility)
 *   [Security](#security)
@@ -181,11 +182,47 @@ XML quotes for attribute values (TypeScript type).
 type Quote = '"' | "'"
 ```
 
+### `Raw`
+
+Raw (TypeScript type).
+
+###### Type
+
+```ts
+import type {Data, Literal} from 'xast'
+
+interface Raw extends Literal {
+  type: 'raw'
+  data?: RawData | undefined
+}
+
+export interface RawData extends Data {}
+```
+
 ## Types
 
 This package is fully typed with [TypeScript][].
-It exports the additional types [`Options`][api-options] and
-[`Quote`][api-quote].
+It exports the additional types [`Options`][api-options], [`Quote`][api-quote],
+and [`Raw`][api-raw].
+
+It also registers the node type with `@types/xast`.
+If you’re working with the syntax tree, make sure to import this utility
+somewhere in your types, as that registers the new node types in the tree.
+
+```js
+/**
+ * @typedef {import('xast-util-to-xml')}
+ */
+
+import {visit} from 'unist-util-visit'
+
+/** @type {import('xast').Root} */
+const tree = getXastNodeSomeHow()
+
+visit(tree, function (node) {
+  // `node` can now be a raw node.
+})
+```
 
 ## Compatibility
 
@@ -287,3 +324,5 @@ abide by its terms.
 [api-options]: #options
 
 [api-quote]: #quote-1
+
+[api-raw]: #raw
